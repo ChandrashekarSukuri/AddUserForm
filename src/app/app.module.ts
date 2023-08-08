@@ -9,10 +9,9 @@ import { ViewModule } from './view/view.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { BloatDirective } from './directives/bloat.directive';
-import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
-  declarations: [AppComponent, BloatDirective, UserTableComponent],
+  declarations: [AppComponent, BloatDirective],
   imports: [
     BrowserModule,
     FormsModule,

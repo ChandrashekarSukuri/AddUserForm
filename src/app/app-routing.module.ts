@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
-import { UserTableComponent } from './user-table/user-table.component';
 
 const routes: Routes = [
   {
@@ -13,11 +12,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginModule),
-  },
-  {
-    path: 'table',
-    component: UserTableComponent,
-  },
+  }
 ];
 
 @NgModule({
