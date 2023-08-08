@@ -1,0 +1,19 @@
+.login-btn {
+  background-color: darkgoldenrod !important;
+  height: 50px;
+  min-width: 150px;
+}
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  background: url(../../assets/login-bg.jpg) no-repeat;
+  background-size: 100% auto;
+}
+.login-inputs {
+  background: white;
+  padding: 20px;
+  padding-bottom: 100px;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}

@@ -1,0 +1,64 @@
+<div class="users-filter-dialog p-3" id="users-filter-dialog">
+  <div class="dialog-heading font18">Filter Users</div>
+  <form [formGroup]="usersFilterForm" (ngSubmit)="filterUsers()">
+    <div class="email-field mt-3 me-2">
+      <div class="mb-1">
+        <label> Designation: </label>
+      </div>
+      <mat-form-field>
+        <mat-select
+          class="designation-select"
+          placeholder="Select a designation"
+          formControlName="designation"
+          name="designationFilter"
+        >
+          <mat-option
+            class="designation-filter-option"
+            *ngFor="let designation of designations"
+            [value]="designation.name"
+          >
+            {{ designation.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="email-field mt-3 me-2">
+      <div class="mb-1">
+        <label> Gender: </label>
+      </div>
+      <mat-radio-group
+        class="example-radio-group"
+        formControlName="gender"
+        name="genderFilter"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let gender of genders"
+          [value]="gender.name"
+        >
+          {{ gender.name }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <button
+      type="submit"
+      name="filterUser"
+      class="filter-btn mt-2"
+      mat-flat-button
+      color="primary"
+    >
+      submit
+    </button>
+    <button
+      color="secondary"
+      class="cancel-btn mt-2"
+      name="clearFilters"
+      mat-flat-button
+      mat-dialog-close=""
+    >
+      clear
+    </button>
+  </form>
+</div>

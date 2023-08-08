@@ -1,0 +1,221 @@
+<!-- <img class="home-bg" src="../../../assets/appbg.jpg" alt="" />  -->
+
+<div class="top-section">
+  <div class="home-exp">
+    <!-- <div>
+      <div class="col-xs-12 font40 fw600">India's Fashion Expert</div>
+      <div class="col-xs-12 font40 fw600">Crazy deals</div>
+      <div class="col-xs-12 font40 fw600">Budget buys</div>
+      <div class="col-xs-12 font16 mt-3">
+        Killer is india's favorite clothing brand that also features on Indian
+        cricket team's jersey.Shop online for fashionable clothing for women,
+        men, girls & kids clothes - everyone can enjoy trendy fashion
+      </div>
+      <div class="mt-5">
+        <button
+          class="shop-btn"
+          mat-flat-button
+          color="primary"
+          [routerLink]="'/products'"
+        >
+          Shop by category
+        </button>
+      </div>
+      <div class="mt-5"></div>
+      <div class="mt-5"></div>
+    </div> -->
+    <div id="addUsersHeading" class="font24 mt-3">{{ addUsersHeading }}</div>
+    <form [formGroup]="userForm" (ngSubmit)="addUser()">
+      <div class="col-md-12 d-flex">
+        <div class="col-md-6">
+          <div class="email-field mt-3 me-2">
+            <div class="mb-1">
+              <label> Name: </label>
+            </div>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="eg; John Doe"
+                formControlName="userName"
+                name="userName"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="email-field mt-3">
+            <div class="mb-1">
+              <label> Email: </label>
+            </div>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="eg: pat@example.com"
+                formControlName="email"
+                name="email"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 d-flex">
+        <div class="col-md-6">
+          <div class="email-field mt-3 me-2">
+            <div class="mb-1">
+              <label> Designation: </label>
+            </div>
+            <mat-form-field>
+              <mat-select
+                class="designation-select"
+                placeholder="Select a designation"
+                formControlName="designation"
+                name="designation"
+              >
+                <mat-option
+                  class="designation-option"
+                  *ngFor="let designation of designations"
+                  [value]="designation.name"
+                >
+                  {{ designation.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="email-field mt-3">
+            <div class="mb-1">
+              <label> Age: </label>
+            </div>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="eg: 28"
+                formControlName="age"
+                name="age"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 d-flex">
+        <div class="col-md-6">
+          <div class="email-field mt-3 me-2">
+            <div class="mb-1">
+              <label> Gender: </label>
+            </div>
+            <mat-radio-group
+              class="example-radio-group"
+              formControlName="gender"
+              name="gender"
+            >
+              <mat-radio-button
+                class="example-radio-button"
+                *ngFor="let gender of genders"
+                [value]="gender.name"
+              >
+                {{ gender.name }}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-action mt-2">
+        <button
+          type="submit"
+          name="addUser"
+          class="login-btn"
+          mat-flat-button
+          color="primary"
+          [disabled]="!userForm.valid"
+        >
+          Add User
+        </button>
+      </div>
+    </form>
+
+    <div class="users-data pt-3">
+      <span class="font24 mb-2">Users Data</span>
+      <button
+        *ngIf="usersList.length"
+        #filterBtn
+        id="filter-users"
+        class="filter-btn float-end mb-2"
+        mat-flat-button
+        color="primary"
+        (click)="openDialog()"
+      >
+        Filter
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="filter_list"
+        ></mat-icon>
+      </button>
+      <div class="login-action mt-2">
+        <ng-container *ngIf="sortedData.length">
+          <table
+            mat-table
+            [dataSource]="sortedData"
+            class="mat-elevation-z8 users-table"
+            matSort
+            (matSortChange)="sortData($event)"
+          >
+            <ng-container matColumnDef="userName">
+              <th mat-header-cell mat-sort-header="userName" *matHeaderCellDef>
+                Name
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+            </ng-container>
+            <ng-container matColumnDef="designation">
+              <th
+                mat-header-cell
+                mat-sort-header="designation"
+                *matHeaderCellDef
+              >
+                Designation
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.designation }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+              <th mat-header-cell mat-sort-header="email" *matHeaderCellDef>
+                Email
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+            </ng-container>
+            <ng-container matColumnDef="age">
+              <th mat-header-cell mat-sort-header="age" *matHeaderCellDef>
+                Age
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+            </ng-container>
+            <ng-container matColumnDef="gender">
+              <th mat-header-cell mat-sort-header="gender" *matHeaderCellDef>
+                Gender
+              </th>
+              <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </ng-container>
+        <div
+          id="no-data-section"
+          *ngIf="sortedData.length == 0"
+          class="no-data text-center width-100"
+        >
+          No Users Added
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="products-container">
+  <div class="font24 mt-5 ps-5">Men's Shirts</div>
+  <hr class="mx-5 mb-5" />
+  <div class="products">
+    <div
+      class="product-item width-25 text-center mb-3"
+      *ngFor="let product of products"
+    >
+      <!-- <img class="product-img width-100" src="{{ product.img }}" alt="" />
+      <div class="product-name mx-5">{{ product.name }}</div>
+      <div class="product-price">₹{{ product.price }}</div> -->
+      <app-product-view
+        [product]="product"
+        (productSelect)="productSelect($event)"
+      ></app-product-view>
+    </div>
+  </div>
+</div>

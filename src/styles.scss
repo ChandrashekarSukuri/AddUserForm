@@ -1,0 +1,83 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Poppins, sans-serif !important;
+}
+.mat-typography,
+.mat-toolbar {
+  font-family: Poppins, sans-serif !important;
+  font: unset;
+}
+mat-toolbar.mat-toolbar.mat-primary.header-nav {
+  background: black;
+}
+mat-form-field {
+  width: 100%;
+}
+
+.font12 {
+  font-size: 12px !important;
+}
+.font10 {
+  font-size: 10px !important;
+}
+.font11 {
+  font-size: 11px !important;
+}
+.font13 {
+  font-size: 13px !important;
+}
+.font16 {
+  font-size: 16px !important;
+}
+.font18 {
+  font-size: 18px !important;
+}
+.font24 {
+  font-size: 24px !important;
+}
+.font28 {
+  font-size: 28px !important;
+}
+.font32 {
+  font-size: 32px !important;
+}
+.font40 {
+  font-size: 40px !important;
+}
+
+.fw400 {
+  font-weight: 400 !important;
+}
+.fw500 {
+  font-weight: 500 !important;
+}
+.fw600 {
+  font-weight: 600 !important;
+}
+
+.width-100 {
+  width: 100%;
+}
+.width-50 {
+  width: 50%;
+}
+.width-25 {
+  width: 25%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.grey-text {
+  color: dimgrey;
+}
+
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}

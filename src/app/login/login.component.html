@@ -1,0 +1,65 @@
+<div class="login-container">
+  <div class="col-md-12 d-flex align-items-center justify-content-center">
+    <div class="col-md-4 my-5 login-inputs">
+      <div class="font40 text-center">Login</div>
+      <div class="grey-text font13 text-center">Please login to continue</div>
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div class="email-field mt-3">
+          <div class="mb-1">
+            <label> Email: </label>
+          </div>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              placeholder="pat@example.com"
+              formControlName="email"
+              required
+            />
+            <mat-error
+              *ngIf="
+                loginForm.get('email').touched &&
+                (loginForm.get('email').errors?.required ||
+                  loginForm.get('email').errors?.email)
+              "
+              >Provide a valid email address.</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="password-field mt-1">
+          <div class="mb-1">
+            <label> Password: </label>
+          </div>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              placeholder="password"
+              formControlName="password"
+              required
+            />
+            <mat-icon matSuffix (click)="hide = !hide">{{
+              hide ? "visibility_off" : "visibility"
+            }}</mat-icon>
+            <mat-error
+              *ngIf="
+                loginForm.get('password').touched &&
+                loginForm.get('password').errors?.required
+              "
+              >Provide a valid password</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="login-action mt-2">
+          <button
+            type="submit"
+            class="login-btn"
+            mat-flat-button
+            color="primary"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
